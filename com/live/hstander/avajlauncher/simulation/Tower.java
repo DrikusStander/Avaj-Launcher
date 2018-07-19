@@ -14,17 +14,23 @@ public class Tower
 
 	public void unregister(Flyable flyable)
 	{
-		// long id = flyable.getId();
-		// int i = 0;
-		// for (Flyable obs : observers)
-		// {
-		// 	if (obs.getId() == id)
-		// 	{
-		// 		break;
-		// 	}
-		// 	i++;
-		// }
-		// observers.remove(i);
+		long id = -1;
+		if (flyable instanceof Aircraft)
+			id = ( (Aircraft)flyable ).getId();
+		int i = 0;
+		for (Flyable obs : observers)
+		{
+			if (obs instanceof Aircraft)
+			{
+				if ( ( (Aircraft)obs ).getId() == id)
+				{
+					break;
+				}
+			}
+			i++;
+		}
+		if (i > -1)
+			observers.remove(i);
 	}
 	
 	protected void conditionsChanged()
