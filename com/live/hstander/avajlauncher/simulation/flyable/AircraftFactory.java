@@ -1,6 +1,6 @@
 package com.live.hstander.avajlauncher.simulation.flyable;
 
-import com.live.hstander.avajlauncher.simulation.*;
+import com.live.hstander.avajlauncher.weather.*;
 // import java.util.*;
 
 public class AircraftFactory

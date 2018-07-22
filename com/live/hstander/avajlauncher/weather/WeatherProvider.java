@@ -1,24 +1,33 @@
 package com.live.hstander.avajlauncher.weather;
 
+import java.util.Random;
+
 import com.live.hstander.avajlauncher.simulation.flyable.*;
 
 public class WeatherProvider
 {
-	private WeatherProvider weatherProvider;
-	private String weather;
+	private static WeatherProvider weatherProvider;
+	private static String weather;
 
 	private WeatherProvider()
 	{
-		this.weatherProvider = new WeatherProvider();
+		weatherProvider = this;
 	}
 
-	public WeatherProvider getProvider()
+	public static WeatherProvider getProvider()
 	{
-		return(this.weatherProvider);
+		new WeatherProvider();
+		return(weatherProvider);
 	}
 
 	public String getCurrenttWeather(Coordinates coordinates)
 	{
-		return(this.weather);
+		Random random = new Random();
+		String[] weatherOptions = {"RAIN", "FOG", "SUN", "SNOW"};
+		int lat = coordinates.getLatitude();
+		int lon = coordinates.getLongitude();
+		int height = coordinates.getHeight();
+		weather = weatherOptions[ (lat + lon + height + (random.nextInt(50) + 7)) % 4];
+		return(weather);
 	}
 }

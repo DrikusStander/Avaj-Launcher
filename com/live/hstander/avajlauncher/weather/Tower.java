@@ -1,4 +1,4 @@
-package com.live.hstander.avajlauncher.simulation;
+package com.live.hstander.avajlauncher.weather;
 
 import com.live.hstander.avajlauncher.simulation.flyable.*;
 import java.util.*;
@@ -35,7 +35,13 @@ public class Tower
 	
 	protected void conditionsChanged()
 	{
-		
+		if (observers.isEmpty() == false)
+		{ 
+			for (int i = 0; i < observers.size(); i++)
+			{
+				observers.get(i).updateConditions();
+			}
+		}
 	}
 
 }
