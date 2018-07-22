@@ -6,12 +6,22 @@ import com.live.hstander.avajlauncher.simulation.flyable.*;
 // import com.live.hstander.avajlauncher.weather.*;
 
 import java.util.*;
+import com.live.hstander.avajlauncher.simulation.*;
 
 
 public class Simulation
 {
 	public static void main(String[] arg)
 	{
+		MyWriter log = MyWriter.getWriter();
+		// log.write("it works");
+		if (arg.length <= 0)
+		{
+			/*
+				Throw exception here
+			*/
+			System.exit(-1);
+		}
 		try
 		{
 			BufferedReader reader = null;
@@ -38,19 +48,22 @@ public class Simulation
 			try
 			{
 				count = Integer.parseInt(line.trim());
+				if (count < 0)
+				{
 				/*
 					check value of count if it is < 0 throw exception
 				*/
+					System.out.println("Invalid argument negative number");
+					System.exit(-1);
+				}
 			}
 			catch(NumberFormatException e)
 			{
 				System.out.println("exception Thrown:  " + e);
 				System.exit(-1);
 			}
-			System.out.println(count);
 			while ((line = reader.readLine()) != null)
 			{
-				System.out.println(line);
 				words = line.split(" +|\t+");
 				if (words.length != 5)
 				{
@@ -68,7 +81,6 @@ public class Simulation
 				// }
 
 			}
-			System.out.println("*************************************************************************\n\n");
 
 			while (count > 0)
 			{
@@ -80,6 +92,7 @@ public class Simulation
 				tower.changeWeather();
 				count--;
 			}
+			log.close();
 			reader.close();
 			System.exit(0);
 		}

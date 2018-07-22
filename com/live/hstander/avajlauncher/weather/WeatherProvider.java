@@ -27,7 +27,8 @@ public class WeatherProvider
 		int lat = coordinates.getLatitude();
 		int lon = coordinates.getLongitude();
 		int height = coordinates.getHeight();
-		weather = weatherOptions[ (lat + lon + height + (random.nextInt(50) + 7)) % 4];
+		int index = (lat + lon + height + (random.nextInt(50) * 3)) % 4;
+		weather = weatherOptions[index];
 		return(weather);
 	}
 }

@@ -26,6 +26,10 @@ public class WeatherTower extends Tower
 	{
 		this.register(flyable);
 		flyable.registerTower(this);
-		// this.observers.add(flyable);
+	}
+
+	public void test()
+	{
+		System.out.println("test works");
 	}
 }

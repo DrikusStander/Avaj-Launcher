@@ -19,6 +19,14 @@ public class AircraftFactory
 		{
 			return(new JetPlane(name, new Coordinates(longitude, latitude, height)));
 		}
+		else
+		{
+			/* 
+				throw an Exception 
+			*/
+			System.out.println("Invalid Flyable type: " + type);
+			System.exit(-1);
+		}
 		return(null);
 	}
 }

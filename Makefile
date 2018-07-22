@@ -8,6 +8,7 @@ all:
 
 clean:
 	rm -fr sources.txt
+	rm -fr simulation.txt
 
 fclean: clean
 	$(CLEAN)

@@ -8,6 +8,14 @@ public class Coordinates
 
 	Coordinates(int longitude, int latitude,int height)
 	{
+		if (latitude <= 0 || longitude <= 0 || height <= 0)
+		{
+			/*
+				Throw Exception
+			*/
+			System.out.println("Invalid argument negative number");
+			System.exit(-1);
+		}
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.height = height;
