@@ -18,7 +18,7 @@ public class MyWriter
 		}
 		catch(IOException e)
 		{
-			
+			System.out.println("MyWriter Error: " + e);
 		}
 	}
 

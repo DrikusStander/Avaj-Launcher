@@ -1,7 +1,7 @@
 package com.live.hstander.avajlauncher.weather;
 
 import com.live.hstander.avajlauncher.simulation.flyable.*;
-// import com.live.hstander.avajlauncher.simulation.Tower;
+import com.live.hstander.avajlauncher.simulation.*;
 
 public class WeatherTower extends Tower
 {
@@ -17,7 +17,7 @@ public class WeatherTower extends Tower
 		return(this.weatherProvider.getCurrenttWeather(coordinates));
 	}
 	
-	void changeWeather()
+	void changeWeather() throws MyException
 	{
 		this.conditionsChanged();
 	}
@@ -28,8 +28,4 @@ public class WeatherTower extends Tower
 		flyable.registerTower(this);
 	}
 
-	public void test()
-	{
-		System.out.println("test works");
-	}
 }

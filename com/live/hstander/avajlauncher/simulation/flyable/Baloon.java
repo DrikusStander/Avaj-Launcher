@@ -12,7 +12,7 @@ public class Baloon extends Aircraft implements Flyable
 		super(name, coordinates);
 	}
 
-	public void updateConditions()
+	public void updateConditions() throws MyException
 	{
 		int lon = this.coordinates.getLongitude();
 		int lat = this.coordinates.getLatitude();
@@ -49,8 +49,15 @@ public class Baloon extends Aircraft implements Flyable
 			if ((height += 4) >= 100)
 			{
 				height = 100;
+				this.coordinates = new Coordinates(lon + 2, lat, height);
 			}
-			this.coordinates = new Coordinates(lon + 2, lat, height);
+			else if (height <= 0)
+			{
+				MyWriter.myWriter.write(call + ": And we are Landing");
+				this.weatherTower.unregister(this);
+			}
+			else
+				this.coordinates = new Coordinates(lon + 2, lat, height);
 		}
 		else if (weather.equals("SNOW"))
 		{

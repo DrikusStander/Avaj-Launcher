@@ -12,7 +12,7 @@ public class Helicopter extends Aircraft implements Flyable
 		super(name, coordinates);
 	}
 
-	public void updateConditions()
+	public void updateConditions() throws MyException
 	{
 		int lon = this.coordinates.getLongitude();
 		int lat = this.coordinates.getLatitude();
@@ -21,30 +21,52 @@ public class Helicopter extends Aircraft implements Flyable
 		String call = "Helicopter#" + this.name + "(" + this.id + ")";
 		if (weather.equals("RAIN"))
 		{
-			MyWriter.myWriter.write(call + ": OH NO! its Raining .... We are going to get wet!");
-			this.coordinates = new Coordinates(lon + 5, lat, height);
+			MyWriter.myWriter.write(call + ": A little Rain never killed anyone ... I think");
+			if (height <= 0)
+			{
+				height = 0;
+				MyWriter.myWriter.write(call + ": We Going to Land ... maybe");
+				this.weatherTower.unregister(this);
+			}
+			else
+				this.coordinates = new Coordinates(lon + 5, lat, height);
 		}
 		else if (weather.equals("FOG"))
 		{
-			MyWriter.myWriter.write(call + ": Hmm i cant see anything ... better be safe and decrease height");
-			this.coordinates = new Coordinates(lon + 1, lat, height);
+			MyWriter.myWriter.write(call + ": Now you See me ... Now you dont !!");
+			if (height <= 0)
+			{
+				height = 0;
+				MyWriter.myWriter.write(call + ": We Going to Land ... maybe");
+				this.weatherTower.unregister(this);
+			}
+			else
+				this.coordinates = new Coordinates(lon + 1, lat, height);
 		}
 		else if (weather.equals("SUN"))
 		{
-			MyWriter.myWriter.write(call + ": What a view!");
+			MyWriter.myWriter.write(call + ": Better put my Sunglasses on");
 			if ((height += 2) >= 100)
 			{
 				height = 100;
+				this.coordinates = new Coordinates(lon + 10, lat, height);
 			}
-			this.coordinates = new Coordinates(lon + 10, lat, height);
+			else if (height <= 0)
+			{
+				height = 0;
+				MyWriter.myWriter.write(call + ": We Going to Land ... maybe");
+				this.weatherTower.unregister(this);
+			}
+			else
+				this.coordinates = new Coordinates(lon + 10, lat, height);
 		}
 		else if (weather.equals("SNOW"))
 		{
-			MyWriter.myWriter.write(call + ": This might have been a bad descicion");
+			MyWriter.myWriter.write(call + ": The Snow ... Oh the Snow ... How white");
 			if ((height -= 12) <= 0)
 			{
 				height = 0;
-				MyWriter.myWriter.write(call + ": And we are Landing");
+				MyWriter.myWriter.write(call + ": We Going to Land ... maybe");
 				this.weatherTower.unregister(this);
 			}
 			else

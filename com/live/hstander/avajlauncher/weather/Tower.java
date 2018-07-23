@@ -16,19 +16,19 @@ public class Tower
 		if (flyable instanceof Baloon)
 		{
 			id = ((Baloon)flyable).getId();
-			name = ((Baloon)flyable).getName();			
+			name = ((Baloon)flyable).getName();
 			MyWriter.myWriter.write("Tower says: Baloon#" + name + "(" + id + ") registered to weather tower");
 		}
 		else if (flyable instanceof JetPlane)
 		{
 			id = ((JetPlane)flyable).getId();
-			name = ((JetPlane)flyable).getName();			
+			name = ((JetPlane)flyable).getName();
 			MyWriter.myWriter.write("Tower says: JetPlane#" + name + "(" + id + ") registered to weather tower");
 		}
 		else if (flyable instanceof Helicopter)
 		{
 			id = ((Helicopter)flyable).getId();
-			name = ((Helicopter)flyable).getName();			
+			name = ((Helicopter)flyable).getName();
 			MyWriter.myWriter.write("Tower says: Helicopter#" + name + "(" + id + ") registered to weather tower");
 		}
 		
@@ -56,24 +56,24 @@ public class Tower
 			String name;
 			if (flyable instanceof Baloon)
 			{
-				name = ((Baloon)flyable).getName();			
+				name = ((Baloon)flyable).getName();
 				MyWriter.myWriter.write("Tower says: Baloon#" + name + "(" + id + ") unregistered from weather tower");
 			}
 			else if (flyable instanceof JetPlane)
 			{
-				name = ((JetPlane)flyable).getName();			
+				name = ((JetPlane)flyable).getName();
 				MyWriter.myWriter.write("Tower says: JetPlane#" + name + "(" + id + ") unregistered from weather tower");
 			}
 			else if (flyable instanceof Helicopter)
 			{
-				name = ((Helicopter)flyable).getName();			
+				name = ((Helicopter)flyable).getName();
 				MyWriter.myWriter.write("Tower says: Helicopter#" + name + "(" + id + ") unregistered from weather tower");
 			}
 			observers.remove(i);
 		}
 	}
 	
-	protected void conditionsChanged()
+	protected void conditionsChanged() throws MyException
 	{
 		if (observers.isEmpty() == false)
 		{ 

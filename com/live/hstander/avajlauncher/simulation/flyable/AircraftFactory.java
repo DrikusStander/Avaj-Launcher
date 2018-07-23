@@ -1,11 +1,12 @@
 package com.live.hstander.avajlauncher.simulation.flyable;
 
 import com.live.hstander.avajlauncher.weather.*;
+import com.live.hstander.avajlauncher.simulation.*;
 // import java.util.*;
 
 public class AircraftFactory
 {
-	public Flyable newAircraft(String type, String name, int longitude, int latitude, int height)
+	public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws MyException
 	{
 		if (type.equals("Baloon"))
 		{
